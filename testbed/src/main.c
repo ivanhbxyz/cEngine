@@ -2,7 +2,8 @@
 
 int main(void)
 {
-    print_int(42);
+    printf("Hello! testing pring_int()");
+    print_int(69);
 
     return 0;
 }
