@@ -6,12 +6,13 @@ REM clang compiler
 set clangCall="C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\Llvm\x64\bin\clang.exe"
 
 REM Get a list of all the .c files
-set cFileNames=
+SET cFilenames=
 FOR /R %%f in (*.c) do (
-    set cFileNames=!cFileNames! %%f
+    SET cFilenames=!cFilenames! %%f
 )
 
-REM echo "Files: " %cFileNames%
+REM echo "Files:" %cFilenames%
+
 SET assembly=testbed
 SET compilerFlags=-g 
 REM -Wall -Werror
@@ -20,4 +21,4 @@ SET linkerFlags=-L../bin/ -lengine.lib
 SET defines=-D_DEBUG -DKIMPORT
 
 ECHO "Building %assembly%%... "
-call %clangCall% %cFileNames% %compilerFlags% -o ../bin/%assembly%.exe %defines% %includeFlags% %linkerFlags%
+call %clangCall% %cFilenames% %compilerFlags% -o ../bin/%assembly%.exe %defines% %includeFlags% %linkerFlags%
