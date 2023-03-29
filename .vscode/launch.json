@@ -13,10 +13,11 @@
       "stopAtEntry": false,
       "cwd": "${workspaceFolder}/bin/",
       "environment": [],
-      "console": "newExternalWindow",
+      "console": "newExternalWindow"
+
       //"externalConsole": false,
-      //"MIMode": "lldb",
-      "preLaunchTask": "C/C++: clang++ build active file"
+      //"MIMode": "lldb"
+      //"preLaunchTask": "C/C++: clang++ build active file"
     }
   ]
 }
