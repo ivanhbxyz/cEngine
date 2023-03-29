@@ -5,15 +5,16 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "C/C++: clang++ build and debug active file",
+      "name": "(Windows) Launch",
       "type": "cppvsdbg",
       "request": "launch",
       "program": "${workspaceFolder}/bin/testbed.exe",
       "args": [],
       "stopAtEntry": false,
-      "cwd": "${workspaceFolder}",
+      "cwd": "${workspaceFolder}/bin/",
       "environment": [],
-      "externalConsole": false,
+      "console": "newExternalWindow",
+      //"externalConsole": false,
       //"MIMode": "lldb",
       "preLaunchTask": "C/C++: clang++ build active file"
     }

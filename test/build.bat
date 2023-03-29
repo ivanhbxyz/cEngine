@@ -12,14 +12,12 @@ FOR /R %%f in (*.c) do (
 )
 
 REM echo "Files: " %cFileNames%
-
-SET assembly=test
-SET compilerFlags=-g
+SET assembly=testbed
+SET compilerFlags=-g 
 REM -Wall -Werror
-SET includeFlags=-Isrc -I../cengine/src/
+SET includeFlags=-Isrc -I../engine/src/
 SET linkerFlags=-L../bin/ -lengine.lib
-set defines=-D_DEBUG -DKIMPORT
-
+SET defines=-D_DEBUG -DKIMPORT
 
 ECHO "Building %assembly%%... "
 call %clangCall% %cFileNames% %compilerFlags% -o ../bin/%assembly%.exe %defines% %includeFlags% %linkerFlags%

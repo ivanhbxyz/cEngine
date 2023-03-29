@@ -5,21 +5,24 @@ SetLocal EnableDelayedExpansion
 REM clang compiler
 set clangCall="C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\Llvm\x64\bin\clang.exe"
 
-REM Get a list of all the .c files
-set cFileNames=
+REM Build script for engine
+@ECHO OFF
+SetLocal EnableDelayedExpansion
+
+REM Get a list of all the .c files.
+SET cFilenames=
 FOR /R %%f in (*.c) do (
-    set cFileNames=!cFileNames! %%f
+    SET cFileNames=!cFileNames! %%f
 )
 
-REM echo "Files: " %cFileNames%
+REM echo "Files:" %cFilenames%
 
-SET assembly=cEngin
+SET assembly=engine
 SET compilerFlags=-g -shared -Wvarargs -Wall -Werror
 REM -Wall -Werror
 SET includeFlags=-Isrc -I%VULKAN_SDK%/Include
 SET linkerFlags=-luser32 -lvulkan-1 -L%VULKAN_SDK%/Lib
-set defines=-D_DEBUG -DKEXPORT -D_CRT_SECURE_NO_WARNINGS
+SET defines=-D_DEBUG -DKEXPORT -D_CRT_SECURE_NO_WARNINGS
 
-
-ECHO "Building %assembly%%... "
+ECHO "Building %assembly%%..."
 call %clangCall% %cFileNames% -o ../bin/%assembly%.dll %defines% %includeFlags% %linkerFlags% 
