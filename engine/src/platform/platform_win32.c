@@ -213,20 +213,31 @@ LRESULT CALLBACK win32_process_message(HWND hwnd, u32 msg, WPARAM w_param, LPARA
         case WM_KEYUP:
         case WM_SYSKEYUP: {
             // key pressed / release
-            b8 pressed = (msg == WM_KEYDOWN || msg == WM_SYSKEYDOWN);
+            //b8 pressed = (msg == WM_KEYDOWN || msg == WM_SYSKEYDOWN);
 
         } break;
         case WM_MOUSEMOVE : {
 
         }break;
         case WM_MOUSEWHEEL : {
+            /*
             i32 z_delta = GET_WHEEL_DELTA_WPARAM(w_param);
             if(z_delta != 0) {
                 // Flatten the input to an OS independent
                 z_delta = (z_delta < 0) ? -1 : 1;
             }
+            */
+        } break;
+        case WM_LBUTTONDOWN:
+        case WM_MBUTTONDOWN:
+        case WM_RBUTTONDOWN:
+        case WM_LBUTTONUP:
+        case WM_MBUTTONUP:
+        case WM_RBUTTONUP: {
+            //b8 pressed = msg == WM_LBUTTONDOWN || msg == WM_RBUTTONDOWN || msg == WM_MBUTTONDOWN;
         } break;
     }
+    return DefWindowProcA(hwnd, msg, w_param, l_param);
 }
     
     #endif
