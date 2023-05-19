@@ -25,11 +25,12 @@ void log_output(log_level level, const char* message, ...) {
     const char* level_strings[6] = {"[FATA]: ", "[ERROR]: ", "[WARN]: ", "[INFO]: ", "[DEBUG]: ", "[TRACE]: "};
     //b8 is_error = level < 2;
 
-    // Techically imposes a 32k character limii on a single log entry , but..
+    // Techically imposes a 32k character limit on a single log entry , but..
     // Don't do that
     char out_message[32000]; // array of chars
-    memset(out_message, 0, sizeof(out_message)); // zeros out the memory. this is faster than using malloc
 
+    // zeros out the memory. this is faster than using malloc. done on the stack
+    memset(out_message, 0, sizeof(out_message));
 
     /*
         Format original message
