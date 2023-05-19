@@ -43,16 +43,16 @@ void log_output(log_level level, const char* message, ...) {
     // What is va_list?
     __builtin_va_list arg_ptr; // this allows us to point to the argument list in the methods were ... is passed
     va_start(arg_ptr, message); // starts AFTER the message argument
-    vsnprintf(out_message, 32000, message, arg_ptr);
+    vsnprintf(out_message, msg_length, message, arg_ptr);
     va_end(arg_ptr);
-    char out_message2[32000]; // array of chars
+    char out_message2[msg_length]; // array of chars
     sprintf(out_message2, "%s%s\n", level_strings[level], out_message); // What is sprintf?
 
     // TODO: Platform specific output.
     if(is_error) {
-        platform_console_write_error(out_message, level);
+        platform_console_write_error(out_message2, level);
     } else {
-        platform_console_write(out_message, level);
+        platform_console_write(out_message2, level);
     }
 }
 
